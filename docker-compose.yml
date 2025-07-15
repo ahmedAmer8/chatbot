@@ -1,0 +1,16 @@
+
+services:
+  chatbot:
+    build: .
+    ports:
+      - "8000:8000"  # FastAPI backend
+      - "7860:7860"  # Gradio frontend
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - GRADIO_HOST=0.0.0.0
+      - GRADIO_PORT=7860
+    volumes:
+      - .:/app
+    restart: unless-stopped   
