@@ -18,7 +18,6 @@ A simple chatbot application using Groq API with FastAPI backend and Gradio fron
 groq-chatbot/
 ├── api/
 │   ├── __init__.py
-│   ├── main.py          # FastAPI application
 │   └── models.py        # Pydantic models
 ├── frontend/
 │   ├── __init__.py
@@ -32,6 +31,7 @@ groq-chatbot/
 ├── .env                 # Environment variables
 ├── config.py           # Configuration settings
 ├── requirements.txt    # Python dependencies
+├── main.py             # FastAPI application
 ├── Dockerfile         # Docker configuration
 ├── docker-compose.yml # Docker Compose configuration
 └── README.md          # This file
