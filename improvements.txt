@@ -1,2 +1,0 @@
-improve the UI
-deploy it to gradio spaces and AWS
