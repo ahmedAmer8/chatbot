@@ -1,6 +1,4 @@
-"""
-Gradio frontend for the chatbot
-"""
+
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -36,13 +34,11 @@ class ChatbotUI:
         try:
             logger.info(f"Sending message to API: {message[:50]}...")
             
-            # Prepare request data
             request_data = {
                 "message": message,
                 "conversation_history": self.conversation_history
             }
             
-            # Send request to API
             response = requests.post(
                 f"{self.api_url}/chat",
                 json=request_data,
@@ -55,17 +51,13 @@ class ChatbotUI:
                 tokens_used = result["tokens_used"]
                 execution_time = result["execution_time"]
                 
-                # Update conversation history
                 self.conversation_history.append({"role": "user", "content": message})
                 self.conversation_history.append({"role": "assistant", "content": bot_response})
                 
-                # Update total tokens
                 self.total_tokens += tokens_used
                 
-                # Update chat history for Gradio
                 history.append((message, bot_response))
                 
-                # Create stats string
                 stats = f"Tokens: {tokens_used} | Time: {execution_time:.2f}s | Total Tokens: {self.total_tokens}"
                 
                 logger.info(f"Received response successfully")
@@ -146,7 +138,6 @@ class ChatbotUI:
                     - **Total Tokens**: Total tokens used in this session
                     """)
             
-            # Event handlers
             send_btn.click(
                 fn=self.chat_with_bot,
                 inputs=[msg_input, chatbot],

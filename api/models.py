@@ -1,6 +1,4 @@
-"""
-Pydantic models for API request/response
-"""
+
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 

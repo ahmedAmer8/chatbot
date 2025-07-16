@@ -9,14 +9,12 @@ from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
-# Initialize FastAPI app
 app = FastAPI(
     title="Groq Chatbot API",
     description="A simple chatbot API using Groq",
     version="1.0.0"
 )
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -25,7 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize Groq client
 try:
     groq_client = GroqClient()
     logger.info("Groq client initialized successfully")
@@ -66,7 +63,6 @@ async def chat(request: ChatRequest):
         
         logger.info(f"Received chat request: {request.message[:50]}...")
         
-        # Convert conversation history to dict format
         conversation_history = []
         if request.conversation_history:
             conversation_history = [
@@ -74,7 +70,6 @@ async def chat(request: ChatRequest):
                 for msg in request.conversation_history
             ]
         
-        # Get response from Groq
         result = groq_client.chat(
             message=request.message,
             conversation_history=conversation_history

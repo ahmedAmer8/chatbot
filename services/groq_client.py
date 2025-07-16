@@ -1,6 +1,4 @@
-"""
-Groq API client for handling chat completions
-"""
+
 import time
 from typing import Dict, Any
 from groq import Groq
@@ -35,7 +33,6 @@ class GroqClient:
         try:
             start_time = time.time()
             
-            # Prepare messages
             messages = []
             if conversation_history:
                 messages.extend(conversation_history)
@@ -43,7 +40,6 @@ class GroqClient:
             
             logger.info(f"Sending message to Groq: {message[:50]}...")
             
-            # Make API call
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=messages,
@@ -54,7 +50,6 @@ class GroqClient:
             end_time = time.time()
             execution_time = end_time - start_time
             
-            # Extract response data
             response_content = response.choices[0].message.content
             tokens_used = response.usage.total_tokens
             

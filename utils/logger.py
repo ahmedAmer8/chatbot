@@ -17,16 +17,13 @@ def setup_logger(name: str) -> logging.Logger:
     logger = logging.getLogger(name)
     logger.setLevel(Config.LOG_LEVEL)
     
-    # Create console handler if it doesn't exist
     if not logger.handlers:
         handler = logging.StreamHandler()
         handler.setLevel(Config.LOG_LEVEL)
         
-        # Create formatter
         formatter = logging.Formatter(Config.LOG_FORMAT)
         handler.setFormatter(formatter)
         
-        # Add handler to logger
         logger.addHandler(handler)
     
     return logger
