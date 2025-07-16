@@ -6,7 +6,7 @@ A powerful chatbot application using Groq API with FastAPI backend and Gradio fr
 
 **Try the chatbot now:** [Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/Ahmed-Amer/AI-chatbot)
 
-![Groq Chatbot Interface](./assets/chatbot_screenshot.png)
+![Groq Chatbot Interface](./assets/Groq-Demo.png)
 *Screenshot of the Groq Chatbot interface*
 
 ## Features
